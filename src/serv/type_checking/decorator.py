@@ -1,20 +1,15 @@
 # -*- coding: utf-8 -*-
 from functools import wraps
-# import logging
-
-# logger = logging.getLogger(__name__)
 
 def strict(func):
-    """Проверка фактических типов данных аннотированным"""
+    """Проверка соответствия типов данных их аннотации"""
+    # Приведение типов не учитывается
+
     @wraps(func)
     def wrap(*args, **kwargs):
-        print(args)
-        for k, v in func.__annotations__.items():
-            print(f'{k} = {v.__name__}')
-
-        for v, t in zip(args, func.__annotations__.values()):
-            print(f'{v} = {t.__name__}')
-            if type(v) != t: raise TypeError
+        """Логика декоратора"""
+        for arg, annotated_type in zip(args, func.__annotations__.values()):
+            if type(arg) != annotated_type: raise TypeError(f'{arg} ({type(arg)}) is not {annotated_type}')
 
         return func(*args, **kwargs)
 
