@@ -8,7 +8,7 @@ def sum_two_int(a: int, b: int) -> int:
 
 @strict
 def sum_two_float(a: float, b: float) -> float:
-    """Суммирование целых аргументов"""
+    """Суммирование с плавающей точкой"""
     return a + b
 
 if __name__ == '__main__':
