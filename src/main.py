@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
-from serv.type_checking.decorator import strict
+from serv.type_checking.strict import strict
+from serv.study_time.data import lessons
+from serv.study_time.counting import appearance
 
 @strict
 def sum_two_int(a: int, b: int) -> int:
@@ -12,5 +14,9 @@ def sum_two_float(a: float, b: float) -> float:
     return a + b
 
 if __name__ == '__main__':
-    print(sum_two_int(1, 1))
-    print(sum_two_float(3.14, 1))
+    # print(sum_two_int(1, 1))
+    # print(sum_two_float(3.14, 1))
+
+    for i, lesson in enumerate(lessons):
+        calculated = appearance(lesson['intervals'])
+        assert calculated == lesson['answer'], f'Error on test case {i}, got {calculated}, expected {lesson["answer"]}'
