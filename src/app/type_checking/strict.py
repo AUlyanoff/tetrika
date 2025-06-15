@@ -2,7 +2,7 @@
 import logging
 from functools import wraps
 
-from study_time.counting import logger
+from app.study_time.counting import logger
 
 logger = logging.getLogger(__name__)
 

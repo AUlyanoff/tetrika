@@ -1,31 +1,32 @@
 # -*- coding: utf-8 -*-
 import logging
 
-import init
-from study_time.counting import appearance
-from study_time.data import lessons
-from type_checking.strict import strict
-from wiki_parsing.animal_counting import get_beasts
+from app import init
+from app.study_time.counting import appearance
+from app.study_time.data import lessons
+from app.type_checking.funcs import sum_two_int, sum_two_float
+from app.wiki_parsing.animal_counting import get_beasts
 
 logger = logging.getLogger(__name__)
 
-@strict
-def sum_two_int(a: int, b: int) -> int:
-    """Суммирование целых аргументов"""
-    return a + b
+logger.info(init.tetrika)
 
-@strict
-def sum_two_float(a: float, b: float) -> float:
-    """Суммирование с плавающей точкой"""
-    return a + b
+# Задание 1
+for func in (sum_two_int, sum_two_float):
+    try:
+        result = func(1, 1.)
+    except TypeError as e:
+        logger.error(e)
+    except Exception as e:
+        logger.error(f"Unexpected error: {e}")
+    else:
+        logger.debug(f"{func.__name__}, result = {result}")
 
-if __name__ == '__main__':
+# Задание 2
+get_beasts("Категория:Животные по алфавиту")
 
-    get_beasts("Категория:Животные по алфавиту")
-
-    # logger.info(f"result = {sum_two_int(1, 1)}")
-    # logger.info(f"result = {sum_two_float(3.14, 1.)}")
-    #
-    # for i, lesson in enumerate(lessons):
-    #     calculated = appearance(lesson['intervals'])
-    #     assert calculated == lesson['answer'], f'Error on test case {i}, got {calculated}, expected {lesson["answer"]}'
+# Задание 3
+for i, lesson in enumerate(lessons):
+    calculated = appearance(lesson['intervals'])
+    if calculated != lesson['answer']:
+        logger.error(f'Error on test case {i}, got {calculated}, expected {lesson["answer"]}')
