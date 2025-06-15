@@ -13,7 +13,7 @@ def appearance(intervals: dict) -> int:
         if k in ('pupil', 'tutor'):
             if len(v) & 1:
                 logger.error(f"{k}: {len(v)} - odd number of timestamps")
-                break
+                return -1
             for i in range(0, len(v), 2):
                 result += v[i + 1] - v[i]
 

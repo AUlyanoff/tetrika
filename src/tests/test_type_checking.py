@@ -4,7 +4,7 @@ from app.type_checking.funcs import sum_two_int
 
 
 class DecoratorStrict(unittest.TestCase):
-    """Тест декоратора @strict"""
+    """Проверка декоратора @strict"""
 
     def test_add(self):
         """Верный тип аргументов"""
