@@ -6,7 +6,7 @@ import wikipediaapi
 logger = logging.getLogger(__name__)
 
 
-def get_beasts(article: str, agent: str = 'Tetrika (junir@tetrika.com)'):
+def get_beasts(article: str, agent: str = 'Tetrika (junior@tetrika.com)'):
     """Подсчёт количества животных на каждую букву алфавита"""
 
     wiki = wikipediaapi.Wikipedia(user_agent=agent, language="ru")
