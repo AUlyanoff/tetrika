@@ -1,7 +1,13 @@
 # -*- coding: utf-8 -*-
-from serv.type_checking.strict import strict
-from serv.study_time.data import lessons
-from serv.study_time.counting import appearance
+import logging
+
+import init
+from study_time.counting import appearance
+from study_time.data import lessons
+from type_checking.strict import strict
+from wiki_parsing.animal_counting import get_beasts
+
+logger = logging.getLogger(__name__)
 
 @strict
 def sum_two_int(a: int, b: int) -> int:
@@ -14,8 +20,11 @@ def sum_two_float(a: float, b: float) -> float:
     return a + b
 
 if __name__ == '__main__':
-    # print(sum_two_int(1, 1))
-    # print(sum_two_float(3.14, 1))
+
+    get_beasts()
+
+    logger.info(f"result = {sum_two_int(1, 1)}")
+    logger.info(f"result = {sum_two_float(3.14, 1.)}")
 
     for i, lesson in enumerate(lessons):
         calculated = appearance(lesson['intervals'])
