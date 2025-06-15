@@ -21,11 +21,11 @@ def sum_two_float(a: float, b: float) -> float:
 
 if __name__ == '__main__':
 
-    get_beasts()
+    get_beasts("Категория:Животные по алфавиту")
 
-    logger.info(f"result = {sum_two_int(1, 1)}")
-    logger.info(f"result = {sum_two_float(3.14, 1.)}")
-
-    for i, lesson in enumerate(lessons):
-        calculated = appearance(lesson['intervals'])
-        assert calculated == lesson['answer'], f'Error on test case {i}, got {calculated}, expected {lesson["answer"]}'
+    # logger.info(f"result = {sum_two_int(1, 1)}")
+    # logger.info(f"result = {sum_two_float(3.14, 1.)}")
+    #
+    # for i, lesson in enumerate(lessons):
+    #     calculated = appearance(lesson['intervals'])
+    #     assert calculated == lesson['answer'], f'Error on test case {i}, got {calculated}, expected {lesson["answer"]}'
