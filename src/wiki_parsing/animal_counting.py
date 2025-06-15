@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 import logging
-from itertools import count
 
 import wikipediaapi
 
