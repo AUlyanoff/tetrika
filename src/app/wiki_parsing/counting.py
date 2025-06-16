@@ -13,7 +13,7 @@ def get_beasts(article: str, agent: str = 'Tetrika (junior@tetrika.com)'):
     page = wiki.page(article)
     if not page.exists():
         logger.error(f"Wikipedia page '{article}' not found")
-        return None
+        return False
 
     logger.debug(f"Getting animal list started, waiting...")
     animal_list = sorted(page.categorymembers.keys())
@@ -32,6 +32,7 @@ def get_beasts(article: str, agent: str = 'Tetrika (junior@tetrika.com)'):
                 total += count
                 current_letter = animal[0]                  # текущая буква = первая буква текущего животного
                 count = 1                                   # потому что первая буква текущего животного изменилась
+
         f.write(f"{current_letter}: {count}\n")             # дописываем последнюю букву и счётчик повторений
         logger.debug(f"'{current_letter}' completed: {count}")
         total += count
