@@ -1,6 +1,6 @@
 import unittest
 
-from app.study_time.counting import appearance
+from app.study_time.solution import appearance
 from tests.resource import lessons_right, lessons_odd, lessons_bad
 
 class StudyTime(unittest.TestCase):

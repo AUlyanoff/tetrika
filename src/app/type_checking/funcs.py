@@ -1,4 +1,4 @@
-from app.type_checking.strict import strict
+from app.type_checking.solution import strict
 
 
 @strict

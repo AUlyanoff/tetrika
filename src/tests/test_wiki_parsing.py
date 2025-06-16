@@ -1,7 +1,7 @@
 import unittest
 from unittest.mock import patch
 
-from app.wiki_parsing.counting import get_beasts
+from app.wiki_parsing.solution import get_beasts
 
 
 class WikiParse(unittest.TestCase):

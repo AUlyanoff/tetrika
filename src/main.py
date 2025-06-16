@@ -2,10 +2,10 @@
 import logging
 
 from app import init
-from app.study_time.counting import appearance
+from app.study_time.solution import appearance
 from app.study_time.data import lessons
 from app.type_checking.funcs import sum_two_int, sum_two_float
-from app.wiki_parsing.counting import get_beasts
+from app.wiki_parsing.solution import get_beasts
 
 logger = logging.getLogger(__name__)
 

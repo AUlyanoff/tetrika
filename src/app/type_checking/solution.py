@@ -1,22 +1,25 @@
-"""
-Необходимо реализовать декоратор @strict
-Декоратор проверяет соответствие типов переданных в вызов функции аргументов типам аргументов,  объявленным в
-прототипе функции.
-(подсказка: аннотации типов аргументов можно получить из атрибута объекта функции func.__annotations__ или с помощью
-модуля inspect)
-При несоответствии типов бросать исключение TypeError
-Гарантируется, что параметры в декорируемых функциях будут следующих типов: bool, int, float, str
-Гарантируется, что в декорируемых функциях не будет значений параметров, заданных по умолчанию
+# -*- coding: utf-8 -*-
+import logging
+from functools import wraps
+
+from app.study_time.solution import logger
+
+logger = logging.getLogger(__name__)
+
 
 def strict(func):
-    ...
+    """Проверка соответствия типов данных их аннотации"""
+    # Приведение типов не учитывается
 
+    @wraps(func)
+    def wrap(*args, **kwargs):
+        """Логика декоратора"""
 
-@strict
-def sum_two(a: int, b: int) -> int:
-    return a + b
+        for arg, annotated_type in zip(args, func.__annotations__.values()):
+            if type(arg) != annotated_type:
+                raise TypeError(f'{func.__name__} ({func.__doc__}): {arg} ({type(arg)}) is not {annotated_type}')
 
+        logger.debug(f"{func.__name__} with {args} started...")
+        return func(*args, **kwargs)  # вызов декорированной функции
 
-print(sum_two(1, 2))  # >>> 3
-print(sum_two(1, 2.4))  # >>> TypeError
-"""
+    return wrap
