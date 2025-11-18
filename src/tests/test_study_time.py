@@ -16,7 +16,7 @@ class StudyTime(unittest.TestCase):
         """Подсчитано неверно"""
         for lesson_bad in lessons_bad:
             calculated = appearance(lesson_bad['intervals'])
-            self.assertNotEquals(calculated, lesson_bad["answer"], "верно высчитано суммарное время присутствия")
+            self.assertNotEqual(calculated, lesson_bad["answer"], "верно высчитано суммарное время присутствия")
 
     def test_odd(self):
         """Нечётное количество таймштампов"""
